@@ -15,21 +15,21 @@ namespace ZrakForum.DataAccess
             this.connectionString = connectionString;
         }
 
-        public async Task Create(Forum forum)
+        public async Task CreateAsync(Forum forum)
         {
             using var connection = new SqlConnection(connectionString.Value);
             var sql = "uspCreateForum @Id, @Name, @Description";
             await connection.ExecuteAsync(sql, forum);
         }
 
-        public async Task<IEnumerable<Forum>> GetAll()
+        public async Task<IEnumerable<Forum>> GetAllAsync()
         {
             using var connection = new SqlConnection(connectionString.Value);
             var sql = @"uspGetAllForums";
             return await connection.QueryAsync<Forum>(sql);
         }
 
-        public async Task<Forum> GetById(string id)
+        public async Task<Forum> GetByIdAsync(string id)
         {
             using var connection = new SqlConnection(connectionString.Value);
             var sql = @"uspGetForumById @Id";
