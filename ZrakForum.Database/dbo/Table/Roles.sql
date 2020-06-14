@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Roles]
+(
+	[CreatedAt] DATETIME2(7) NOT NULL DEFAULT GETDATE(),
+	[Id] NVARCHAR(32) NOT NULL PRIMARY KEY,
+	[Name] NVARCHAR(255) NOT NULL
+)
+
+GO
+
+CREATE UNIQUE INDEX [IX_Roles_Name] ON [dbo].[Roles] ([Name])
