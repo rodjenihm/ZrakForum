@@ -59,6 +59,7 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\Table" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Table\Roles.sql" />
@@ -68,6 +69,8 @@
     <Build Include="dbo\Table\Topics.sql" />
     <Build Include="dbo\Table\Replies.sql" />
     <Build Include="dbo\Stored Procedures\uspCreateForum.sql" />
+    <Build Include="dbo\Stored Procedures\uspRegisterUser.sql" />
+    <None Include="dbo\Scripts\SeedRoles.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />
