@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ZrakForum.Database", "ZrakF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakForum.EntityModel", "ZrakForum.EntityModel\ZrakForum.EntityModel.csproj", "{88C0AC0C-2980-4C95-A8F3-8DCE31CF579B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakForum.DataAccess", "ZrakForum.DataAccess\ZrakForum.DataAccess.csproj", "{9F4036F9-E929-466E-BCD8-621D748020F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{88C0AC0C-2980-4C95-A8F3-8DCE31CF579B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88C0AC0C-2980-4C95-A8F3-8DCE31CF579B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88C0AC0C-2980-4C95-A8F3-8DCE31CF579B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F4036F9-E929-466E-BCD8-621D748020F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F4036F9-E929-466E-BCD8-621D748020F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F4036F9-E929-466E-BCD8-621D748020F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F4036F9-E929-466E-BCD8-621D748020F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
