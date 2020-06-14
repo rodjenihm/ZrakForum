@@ -64,5 +64,9 @@
     <Build Include="dbo\Table\Users.sql" />
     <Build Include="dbo\Table\UserRoles.sql" />
     <Build Include="dbo\Table\Forums.sql" />
+    <Build Include="dbo\Table\Topics.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ZrakForum.Database.refactorlog" />
   </ItemGroup>
 </Project>

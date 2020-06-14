@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Topics]
+(
+	[CreatedAt] DATETIME2(7) NOT NULL DEFAULT GETDATE(),
+	[Id] NVARCHAR(32) NOT NULL PRIMARY KEY,
+	[Title] NVARCHAR(255) NOT NULL,
+	[Description] NVARCHAR(MAX) NOT NULL,
+	[AuthorId] NVARCHAR(32) NOT NULL,
+	[ForumId] NVARCHAR(32) NOT NULL, 
+    CONSTRAINT [FK_Topics_Users] FOREIGN KEY ([AuthorId]) REFERENCES [Users]([Id]), 
+    CONSTRAINT [FK_Topics_Forums] FOREIGN KEY ([ForumId]) REFERENCES [Forums]([Id])
+)
