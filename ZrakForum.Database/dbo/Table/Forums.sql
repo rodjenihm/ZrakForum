@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Forums]
+(
+	[CreatedAt] DATETIME2(7) NOT NULL DEFAULT GETDATE(),
+	[Id] NVARCHAR(32) NOT NULL PRIMARY KEY,
+	[Name] NVARCHAR(255) NOT NULL,
+	[Description] NVARCHAR(MAX) NOT NULL
+)
+
+GO
+
+CREATE UNIQUE INDEX [IX_Forums_Name] ON [dbo].[Forums] ([Name])
