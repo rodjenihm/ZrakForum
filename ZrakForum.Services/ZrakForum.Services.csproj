@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ZrakForum.DataAccess\ZrakForum.DataAccess.csproj" />
+    <ProjectReference Include="..\ZrakForum.EntityModel\ZrakForum.EntityModel.csproj" />
+  </ItemGroup>
+
+</Project>
