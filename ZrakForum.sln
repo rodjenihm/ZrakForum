@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ZrakForum.Database", "ZrakForum.Database\ZrakForum.Database.sqlproj", "{A0554D70-0595-4ABB-A77F-42AB3486C51A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakForum.EntityModel", "ZrakForum.EntityModel\ZrakForum.EntityModel.csproj", "{88C0AC0C-2980-4C95-A8F3-8DCE31CF579B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZrakForum.EntityModel", "ZrakForum.EntityModel\ZrakForum.EntityModel.csproj", "{88C0AC0C-2980-4C95-A8F3-8DCE31CF579B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakForum.DataAccess", "ZrakForum.DataAccess\ZrakForum.DataAccess.csproj", "{9F4036F9-E929-466E-BCD8-621D748020F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZrakForum.DataAccess", "ZrakForum.DataAccess\ZrakForum.DataAccess.csproj", "{9F4036F9-E929-466E-BCD8-621D748020F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZrakForum.Services", "ZrakForum.Services\ZrakForum.Services.csproj", "{F64D7194-DCD4-496C-B1DE-4E1FCF0B1F62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{9F4036F9-E929-466E-BCD8-621D748020F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F4036F9-E929-466E-BCD8-621D748020F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F4036F9-E929-466E-BCD8-621D748020F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64D7194-DCD4-496C-B1DE-4E1FCF0B1F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64D7194-DCD4-496C-B1DE-4E1FCF0B1F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64D7194-DCD4-496C-B1DE-4E1FCF0B1F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64D7194-DCD4-496C-B1DE-4E1FCF0B1F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
