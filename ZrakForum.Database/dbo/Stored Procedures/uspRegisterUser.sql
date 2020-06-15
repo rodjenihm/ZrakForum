@@ -8,8 +8,8 @@ BEGIN
 
 	IF EXISTS (SELECT TOP 1 [Username] FROM [dbo].[Users] WHERE [Username] = @Username)
 	BEGIN
-		DECLARE @message_text NVARCHAR(MAX) = FORMATMESSAGE('Korisničko ime %s je već u upotrebi', @Username)
-		RAISERROR(@message_text, 16, 1, 'Username')
+		DECLARE @message_text NVARCHAR(MAX) = FORMATMESSAGE('Korisničko ime %s je već u upotrebi', @Username);
+		THROW 50000, @message_text, 1
 	END
 	ELSE
 	BEGIN
@@ -20,8 +20,8 @@ BEGIN
 			    COMMIT TRANSACTION [Tran1]
 			END TRY
 			BEGIN CATCH
-			    ROLLBACK TRANSACTION [Tran1]
-				RAISERROR('Neočekivana greška prilikom registracije korisnika. Molimo pokušajte kasnije', 16, 1)
+			    ROLLBACK TRANSACTION [Tran1];
+				THROW 50000, 'Neočekivana greška prilikom registracije korisnika. Molimo pokušajte kasnije', 1
 			END CATCH
 	END
 END

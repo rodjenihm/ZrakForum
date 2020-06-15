@@ -6,8 +6,8 @@ BEGIN
 
 	IF NOT EXISTS (SELECT TOP 1 [Id] FROM [dbo].[Users] WHERE [Id] = @UserId)
 	BEGIN
-		DECLARE @message_text NVARCHAR(MAX) = FORMATMESSAGE('Korisnik čiji je Id %s ne postoji', @UserId)
-		RAISERROR(@message_text, 16, 1)
+		DECLARE @message_text NVARCHAR(MAX) = FORMATMESSAGE('Korisnik čiji je Id %s ne postoji', @UserId);
+		THROW 50000, @message_text, 1
 	END
 	ELSE
 	BEGIN
