@@ -9,7 +9,7 @@ BEGIN
 	IF EXISTS (SELECT TOP 1 [Username] FROM [dbo].[Users] WHERE [Username] = @Username)
 	BEGIN
 		DECLARE @message_text NVARCHAR(MAX) = FORMATMESSAGE('Korisničko ime %s je već u upotrebi', @Username)
-		RAISERROR(@message_text, 16, 1)
+		RAISERROR(@message_text, 16, 1, 'Username')
 	END
 	ELSE
 	BEGIN

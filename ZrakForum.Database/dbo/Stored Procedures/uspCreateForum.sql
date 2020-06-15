@@ -9,7 +9,7 @@ BEGIN
 	IF EXISTS (SELECT TOP 1 [Name] FROM [dbo].[Forums] WHERE [Name] = @Name)
 	BEGIN
 		DECLARE @message_text NVARCHAR(MAX) = FORMATMESSAGE('Forum sa imenom %s već postoji', @Name)
-		RAISERROR(@message_text, 16, 1)
+		RAISERROR(@message_text, 16, 1, 'Name')
 	END
 	ELSE
 	BEGIN
