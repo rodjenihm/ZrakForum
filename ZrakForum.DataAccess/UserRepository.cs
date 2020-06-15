@@ -23,5 +23,12 @@ namespace ZrakForum.DataAccess
             var sql = "uspRegisterUser @Id, @Username, @PasswordHash";
             await connection.ExecuteAsync(sql, user);
         }
+
+        public async Task<User> GetByUsernameAsync(string username)
+        {
+            using var connection = new SqlConnection(connectionString.Value);
+            var sql = "uspGetUserByUsername @Username";
+            return await connection.QueryFirstAsync<User>(sql, new { Username = username });
+        }
     }
 }
