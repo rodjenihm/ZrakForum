@@ -73,7 +73,7 @@ namespace ZrakForum.Web.Controllers
 
             var user = new User
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Guid.NewGuid().ToString("N"),
                 Username = model.Username,
                 PasswordHash = passwordHasher.HashPassword(model.Password)
             };
