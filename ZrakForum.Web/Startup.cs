@@ -32,6 +32,7 @@ namespace ZrakForum.Web
             services.AddSingleton(connectionString);
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
