@@ -27,7 +27,7 @@ body {
     min-height: calc(100vh - 213px - 60px);
     padding-top: 20px;
     background: url('../img/background.jpg') no-repeat;
-    background-color: rgba(215,215,215,0.60);
+    background-color: rgba(225, 225, 225, 0.80);
     background-blend-mode: lighten;
     background-size: cover;
     background-position: top;
@@ -42,4 +42,8 @@ body {
     background: rgba(32, 32, 32, 0.9);
     color: white;
     text-align: center;
+}
+
+.text-danger {
+    font-weight: bolder;
 }

@@ -33,6 +33,7 @@ namespace ZrakForum.Web
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IForumRepository, ForumRepository>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
