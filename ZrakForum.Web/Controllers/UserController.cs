@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ZrakForum.DataAccess;
+using ZrakForum.EntityModel;
+using ZrakForum.Services;
 using ZrakForum.Web.Dto;
 
 namespace ZrakForum.Web.Controllers
@@ -12,10 +17,14 @@ namespace ZrakForum.Web.Controllers
     public class UserController : Controller
     {
         private readonly IUserRepository userRepository;
+        private readonly IRoleRepository roleRepository;
+        private readonly IPasswordHasher passwordHasher;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository, IRoleRepository roleRepository, IPasswordHasher passwordHasher)
         {
             this.userRepository = userRepository;
+            this.roleRepository = roleRepository;
+            this.passwordHasher = passwordHasher;
         }
 
         public IActionResult Login(string returnUrl)
@@ -28,12 +37,37 @@ namespace ZrakForum.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(UserLoginDto model, string returnUrl)
+        public async Task<IActionResult> Login(UserLoginDto model, string returnUrl)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
-            return View();
+            var user = await userRepository.GetByUsernameAsync(model.Username);
+
+            if (user == null || !passwordHasher.VerifyHashedPassword(model.Password, user.PasswordHash))
+            {
+                ViewBag.Error = "Korisničko ime ili šifra su pogrešni";
+                return View(model);
+            }
+
+            var userRoles = await roleRepository.GetByUserIdAsync(user.Id);
+
+            var zrakClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Username)
+            };
+
+            foreach (var userRole in userRoles)
+            {
+                zrakClaims.Add(new Claim(ClaimTypes.Role, userRole.Name));
+            }
+
+            var zrakIdentity = new ClaimsIdentity(zrakClaims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var userPrincipal = new ClaimsPrincipal(new[] { zrakIdentity });
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
+
+            return string.IsNullOrEmpty(returnUrl) ? RedirectToAction("Index", "Home") : (IActionResult)LocalRedirect(returnUrl);
         }
 
         public IActionResult Register()
@@ -45,14 +79,35 @@ namespace ZrakForum.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(UserRegisterDto model)
+        public async Task<IActionResult> Register(UserRegisterDto model)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
+            var user = new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                Username = model.Username,
+                PasswordHash = passwordHasher.HashPassword(model.Password)
+            };
 
+            try
+            {
+                await userRepository.CreateAsync(user);
+                return View();
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+                return View(model);
+            }
+        }
 
-            return View();
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
