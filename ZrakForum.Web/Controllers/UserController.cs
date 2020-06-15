@@ -50,20 +50,7 @@ namespace ZrakForum.Web.Controllers
                 return View(model);
             }
 
-            var userRoles = await roleRepository.GetByUserIdAsync(user.Id);
-
-            var zrakClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Username)
-            };
-
-            foreach (var userRole in userRoles)
-            {
-                zrakClaims.Add(new Claim(ClaimTypes.Role, userRole.Name));
-            }
-
-            var zrakIdentity = new ClaimsIdentity(zrakClaims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var userPrincipal = new ClaimsPrincipal(new[] { zrakIdentity });
+            var userPrincipal = await GenerateUserPrincipal(user);
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
 
@@ -94,6 +81,8 @@ namespace ZrakForum.Web.Controllers
             try
             {
                 await userRepository.CreateAsync(user);
+                var userPrincipal = await GenerateUserPrincipal(user);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
                 return View();
             }
             catch (Exception e)
@@ -109,5 +98,25 @@ namespace ZrakForum.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        private async Task<ClaimsPrincipal> GenerateUserPrincipal(User user)
+        {
+            var userRoles = await roleRepository.GetByUserIdAsync(user.Id);
+
+            var zrakClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Username)
+            };
+
+            foreach (var userRole in userRoles)
+            {
+                zrakClaims.Add(new Claim(ClaimTypes.Role, userRole.Name));
+            }
+
+            var zrakIdentity = new ClaimsIdentity(zrakClaims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var userPrincipal = new ClaimsPrincipal(new[] { zrakIdentity });
+            return userPrincipal;
+        }
+
     }
 }
