@@ -83,7 +83,7 @@ namespace ZrakForum.Web.Controllers
                 await userRepository.CreateAsync(user);
                 var userPrincipal = await GenerateUserPrincipal(user);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
-                return View();
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception e)
             {
