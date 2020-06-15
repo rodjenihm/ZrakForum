@@ -74,6 +74,7 @@
     <Build Include="dbo\Stored Procedures\uspGetAllForums.sql" />
     <Build Include="dbo\Stored Procedures\uspGetForumById.sql" />
     <Build Include="dbo\Stored Procedures\uspGetRolesByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetUserByUsername.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />
