@@ -19,7 +19,7 @@ namespace ZrakForum.DataAccess
         {
             using var connection = new SqlConnection(connectionString.Value);
             var sql = "uspCreateForum @Id, @Name, @Description";
-            await connection.ExecuteAsync(sql, forum);
+            await connection.ExecuteScalarAsync<int>(sql, forum);
         }
 
         public async Task<IEnumerable<Forum>> GetAllAsync()
@@ -27,6 +27,13 @@ namespace ZrakForum.DataAccess
             using var connection = new SqlConnection(connectionString.Value);
             var sql = @"uspGetAllForums";
             return await connection.QueryAsync<Forum>(sql);
+        }
+
+        public async Task<IEnumerable<dynamic>> GetAllForumIndexInfosAsync()
+        {
+            using var connection = new SqlConnection(connectionString.Value);
+            var sql = @"uspGetAllForumIndexInfos";
+            return await connection.QueryAsync(sql);
         }
 
         public async Task<Forum> GetByIdAsync(string id)

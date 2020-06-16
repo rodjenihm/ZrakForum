@@ -9,5 +9,6 @@ namespace ZrakForum.DataAccess
         Task<IEnumerable<Forum>> GetAllAsync();
         Task<Forum> GetByIdAsync(string id);
         Task CreateAsync(Forum forum);
+        Task<IEnumerable<dynamic>> GetAllForumIndexInfosAsync();
     }
 }
