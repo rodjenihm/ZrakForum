@@ -77,6 +77,7 @@
     <Build Include="dbo\Stored Procedures\uspGetUserByUsername.sql" />
     <Build Include="dbo\Stored Procedures\uspGetTopicsCountByForumId.sql" />
     <Build Include="dbo\Stored Procedures\uspGetRepliesCountByForumId.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetAllForumIndexInfos.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />
