@@ -10,6 +10,6 @@ namespace ZrakForum.EntityModel
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public IEnumerable<User> Users { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

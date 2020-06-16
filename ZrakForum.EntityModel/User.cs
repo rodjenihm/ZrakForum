@@ -11,8 +11,8 @@ namespace ZrakForum.EntityModel
         [Required]
         [StringLength(48)]
         public string PasswordHash { get; set; }
-        public IEnumerable<Role> Roles { get; set; }
-        public IEnumerable<Topic> Topics { get; set; }
-        public IEnumerable<Reply> Replies { get; set; }
+        public ICollection<Role> Roles { get; set; }
+        public ICollection<Topic> Topics { get; set; }
+        public ICollection<Reply> Replies { get; set; }
     }
 }

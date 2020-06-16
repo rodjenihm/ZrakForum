@@ -10,6 +10,6 @@ namespace ZrakForum.EntityModel
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        public IEnumerable<Topic> Topics { get; set; }
+        public ICollection<Topic> Topics { get; set; }
     }
 }

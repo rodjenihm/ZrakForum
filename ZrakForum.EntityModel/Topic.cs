@@ -10,7 +10,7 @@ namespace ZrakForum.EntityModel
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
-        public IEnumerable<Reply> Replies { get; set; }
+        public ICollection<Reply> Replies { get; set; }
         public string AuthorId { get; set; }
         public User Author { get; set; }
         public string ForumId { get; set; }
