@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using ZrakForum.DataAccess.Model;
 using ZrakForum.EntityModel;
 
 namespace ZrakForum.DataAccess
@@ -29,11 +30,11 @@ namespace ZrakForum.DataAccess
             return await connection.QueryAsync<Forum>(sql);
         }
 
-        public async Task<IEnumerable<dynamic>> GetAllForumIndexInfosAsync()
+        public async Task<IEnumerable<ForumIndexInfo>> GetAllForumIndexInfosAsync()
         {
             using var connection = new SqlConnection(connectionString.Value);
             var sql = @"uspGetAllForumIndexInfos";
-            return await connection.QueryAsync(sql);
+            return await connection.QueryAsync<ForumIndexInfo>(sql);
         }
 
         public async Task<Forum> GetByIdAsync(string id)

@@ -12,7 +12,7 @@ BEGIN
 		- 1
 		- CASE COUNT(t.Title) OVER (PARTITION BY f.[Name]) WHEN COUNT(*) OVER (PARTITION BY f.[Name]) THEN 0 ELSE 1 END
 		AS TopicsCount,
-		count(r.[Id]) OVER (PARTITION BY f.[Name]) AS RepliesCount,
+		COUNT(r.[Id]) OVER (PARTITION BY f.[Name]) AS RepliesCount,
 		u.[Username] as LastPostedBy, t.[Title] as LastPostedIn, r.[CreatedAt] AS LastPostedAt,
 		ROW_NUMBER() OVER (PARTITION BY f.[Name] ORDER BY r.[CreatedAt] DESC) AS rc
 		FROM [dbo].[Forums] f

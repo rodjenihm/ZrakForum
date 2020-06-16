@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ZrakForum.EntityModel;
 
-namespace ZrakForum.Web.Model
+namespace ZrakForum.DataAccess.Model
 {
     public class ForumIndexInfo
     {

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ZrakForum.DataAccess;
 using ZrakForum.EntityModel;
 using ZrakForum.Web.Dto;
-using ZrakForum.Web.Model;
+using ZrakForum.DataAccess.Model;
 
 namespace ZrakForum.Web.Controllers
 {
