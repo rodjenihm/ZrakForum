@@ -10,11 +10,12 @@ for details on configuring this project to bundle and minify static web assets. 
 
 html, body {
     height: 100%;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-@media(max-width: 800px) {
-    html {
+
+@media(max-width:640px) {
+    html, body {
         font-size: 12px;
     }
 }

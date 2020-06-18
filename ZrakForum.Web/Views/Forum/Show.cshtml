@@ -6,6 +6,8 @@
 }
 else
 {
+    ViewBag.Title = Model.ForumName;
+
     <div class="text-light bg-dark p-2">
         Teme
         <a class="bnt btn-dark float-right" asp-action="Create" asp-controller="Topic" asp-route-ForumId="@Model.ForumId">+ Nova tema</a>
