@@ -54,7 +54,7 @@ namespace ZrakForum.DataAccess
                 return await connection.QueryFirstAsync<Forum>(sql, new { Id = id });
             }
         }
-        public async Task<IEnumerable<ForumShow>> GetForumShowByIdAsync(string Id)
+        public async Task<ForumShow> GetForumShowByIdAsync(string Id)
         {
             using var connection = new SqlConnection(connectionString.Value);
             var sql = @"uspGetForumShowById @Id";
@@ -78,7 +78,7 @@ namespace ZrakForum.DataAccess
                 }),
                 new { Id });
 
-            return lookup.Values;
+            return lookup.Values.FirstOrDefault();
         }
 
         // Helpers

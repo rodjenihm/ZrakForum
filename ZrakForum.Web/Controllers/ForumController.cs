@@ -64,7 +64,7 @@ namespace ZrakForum.Web.Controllers
             try
             {
                 var forum = await forumRepository.GetForumShowByIdAsync(id);
-                return View(forum.FirstOrDefault());
+                return View(forum);
             }
             catch (Exception)
             {

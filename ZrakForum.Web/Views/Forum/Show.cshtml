@@ -18,7 +18,7 @@ else
     else
     {
         <table class="table table-striped table-hover">
-            @foreach (var item in Model.Topics)
+            @foreach (var item in Model.Topics.OrderByDescending(t => t.LastReplyAt))
             {
                 <tr>
                     <td>

@@ -11,6 +11,6 @@ namespace ZrakForum.DataAccess
         Task<Forum> GetByIdAsync(string id, bool includeTopics);
         Task CreateAsync(Forum forum);
         Task<IEnumerable<ForumIndexInfo>> GetAllForumIndexInfosAsync();
-        Task<IEnumerable<ForumShow>> GetForumShowByIdAsync(string Id);
+        Task<ForumShow> GetForumShowByIdAsync(string Id);
     }
 }
