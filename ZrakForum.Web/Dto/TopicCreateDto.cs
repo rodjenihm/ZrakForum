@@ -14,7 +14,7 @@ namespace ZrakForum.Web.Dto
         public string Title { get; set; }
         [Required(ErrorMessage = "{0} je obavezan")]
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Komentar")]
+        [Display(Name = "Uvodni komentar")]
         public string Description { get; set; }
     }
 }
