@@ -81,6 +81,8 @@
     <Build Include="dbo\Stored Procedures\uspGetForumWithTopicsByIdAsync.sql" />
     <Build Include="dbo\Stored Procedures\uspCreateTopic.sql" />
     <Build Include="dbo\Stored Procedures\uspGetForumShowById.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetTopicShowById.sql" />
+    <Build Include="dbo\Stored Procedures\uspCreateReply.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />

@@ -48,9 +48,23 @@ namespace ZrakForum.Web.Controllers
                 await topicRepository.CreateAsync(topic);
                 return RedirectToAction("Show", "Forum", new { id = forumId });
             }
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+                return View(model);
+            }
+        }
+
+        public async Task<IActionResult> Show(string id)
+        {
+            try
+            {
+                var topic = await topicRepository.GetTopicShowByIdAsync(id);
+                return View(topic);
+            }
             catch (Exception)
             {
-                return View(model);
+                return View(null);
             }
         }
     }

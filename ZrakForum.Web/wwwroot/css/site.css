@@ -9,7 +9,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 html, body {
-    height: 100%;
+    min-height: 100%;
     font-size: 15px;
 }
 
@@ -45,6 +45,12 @@ body {
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
+}
+
+.img-profile {
+    max-height: 120px;
+    width: auto;
+    border: 1px solid grey;
 }
 
 .footer {

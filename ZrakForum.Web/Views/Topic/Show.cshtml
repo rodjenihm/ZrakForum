@@ -1,0 +1,42 @@
+﻿@model ZrakForum.DataAccess.Models.TopicShow
+
+@{
+}
+
+@if (Model == null)
+{
+    <h2 class="font-weight-bold text-dark">Tražena tema ne postoji</h2>
+}
+else
+{
+    ViewBag.Title = Model.TopicTitle;
+
+
+    @if (Model.Replies == null)
+    {
+        <h2 class="text-dark">Neuspelo učitavanje teme. Molimo pokušajte kasnije</h2>
+    }
+    else
+    {
+        <table class="table table-striped table-hover">
+            @foreach (var item in Model.Replies.OrderBy(r => r.ReplyAt))
+            {
+                <tr>
+                    <td class="border-right" style="width: 20%">
+                        <span>
+                            <img class="img-fluid rounded-circle img-profile"
+                                 src="~/img/profile.png" />
+                        </span>
+                        <br />
+                        <span class="font-weight-bold">@item.AuthorUsername</span>
+                        <br />
+                        <span class="font-weight-bold">@item.ReplyAt.ToString("dd. MM. yyyy. HH:mm")h</span>
+                    </td>
+                    <td class="font-weight-bold text-dark" style="width: 80%">@item.Text</td>
+                </tr>
+            }
+        </table>
+
+        <a class="bnt btn-primary float-right mb-5" asp-action="Create" asp-controller="Reply" asp-route-TopicId="@Model.TopicId">Dodaj komentar</a>
+    }
+}
