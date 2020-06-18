@@ -1,9 +1,19 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a class="nav-link" href="#">Pozdrav @@@User.Identity.Name!</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pozdrav @@@User.Identity.Name!
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Podešavanja profila</a>
+                <a class="dropdown-item" href="#">Moje teme</a>
+                <a class="dropdown-item" href="#">Moji komentari</a>
+            </div>
         </li>
+        @*<li>
+                <a class="nav-link" href="#">Pozdrav @@@User.Identity.Name!</a>
+            </li>*@
         <li>
             <a class="nav-link" asp-action="Logout" asp-controller="User">Odjavite se</a>
         </li>
