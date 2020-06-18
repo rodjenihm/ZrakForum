@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ZrakForum.DataAccess;
-using ZrakForum.DataAccess.Model;
+using ZrakForum.DataAccess.Models;
 
 namespace ZrakForum.Web.Controllers
 {
@@ -17,10 +17,14 @@ namespace ZrakForum.Web.Controllers
             this.forumRepository = forumRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var forums = (await forumRepository.GetAllForumIndexInfosAsync());
-            return View(forums);
+            return RedirectToAction("Index", "Forum");
+        }
+
+        public IActionResult About()
+        {
+            return View();
         }
     }
 }

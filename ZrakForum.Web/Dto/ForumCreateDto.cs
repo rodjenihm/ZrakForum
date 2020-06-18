@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZrakForum.Web.Dto
 {
-    public class ForumAddDto
+    public class ForumCreateDto
     {
         [Required(ErrorMessage = "{0} je obavezno")]
         [Display(Name = "Ime foruma")]

@@ -105,7 +105,8 @@ namespace ZrakForum.Web.Controllers
 
             var zrakClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim("Id", user.Id)
             };
 
             foreach (var userRole in userRoles)

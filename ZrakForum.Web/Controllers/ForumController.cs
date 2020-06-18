@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ZrakForum.DataAccess;
 using ZrakForum.EntityModel;
 using ZrakForum.Web.Dto;
-using ZrakForum.DataAccess.Model;
+using ZrakForum.DataAccess.Models;
 
 namespace ZrakForum.Web.Controllers
 {
@@ -20,6 +20,12 @@ namespace ZrakForum.Web.Controllers
             this.forumRepository = forumRepository;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            var forums = (await forumRepository.GetAllForumIndexInfosAsync());
+            return View(forums);
+        }
+
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
@@ -28,7 +34,7 @@ namespace ZrakForum.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create(ForumAddDto model)
+        public async Task<IActionResult> Create(ForumCreateDto model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -52,16 +58,17 @@ namespace ZrakForum.Web.Controllers
             }
         }
 
+        [Authorize]
         public async Task<IActionResult> Show(string id)
         {
             try
             {
-                var forum = await forumRepository.GetByIdAsync(id);
-                return View(forum);
+                var forum = await forumRepository.GetForumShowByIdAsync(id);
+                return View(forum.FirstOrDefault());
             }
             catch (Exception)
             {
-                return NotFound();
+                return View(null);
             }
         }
     }

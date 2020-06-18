@@ -1,6 +1,6 @@
-﻿@model IEnumerable<ZrakForum.DataAccess.Model.ForumIndexInfo>
+﻿@model IEnumerable<ZrakForum.DataAccess.Models.ForumIndexInfo>
 @{
-    ViewBag.Title = "Početna";
+    ViewBag.Title = "Forumi";
 }
 
 @if (!User.Identity.IsAuthenticated)
@@ -43,9 +43,8 @@
                         <br />
                         <span class="font-weight-bold">
                             Najnoviji komentar:
-                            @forumInfo.LastPostedBy @@ @forumInfo.LastPostedIn, @forumInfo.LastPostedAt.ToString("dd/MM/yyyy HH:mm:ss")
+                            @forumInfo.LastPostedBy @@ @forumInfo.LastPostedIn, @forumInfo.LastPostedAt.ToString("dd. MM. yyyy. HH:mm")h
                         </span>
-
                     }
                 </td>
             </tr>
