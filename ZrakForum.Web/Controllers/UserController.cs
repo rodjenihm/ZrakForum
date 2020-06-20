@@ -101,6 +101,7 @@ namespace ZrakForum.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         public async Task<IActionResult> Show(string username)
         {
             var user = await userRepository.GetByUsernameAsync(username);
