@@ -1,7 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[uspRegisterUser]
 	@Id NVARCHAR(32),
 	@Username NVARCHAR(255),
-	@PasswordHash NVARCHAR(48)
+	@PasswordHash NVARCHAR(48),
+	@ImageUrl NVARCHAR(255)
 AS
 BEGIN
 	SET NOCOUNT ON
@@ -15,7 +16,7 @@ BEGIN
 	BEGIN
 		BEGIN TRANSACTION [Tran1]
 			BEGIN TRY
-				INSERT INTO [dbo].[Users] ([Id], [Username], [PasswordHash]) VALUES (@Id, @Username, @PasswordHash)
+				INSERT INTO [dbo].[Users] ([Id], [Username], [PasswordHash], [ImageUrl]) VALUES (@Id, @Username, @PasswordHash, @ImageUrl)
 				INSERT INTO [dbo].[UserRoles] ([UserId], [RoleId]) SELECT @Id, [Id] AS roleId FROM [dbo].[Roles] WHERE [Name] = 'Member'
 			    COMMIT TRANSACTION [Tran1]
 			END TRY

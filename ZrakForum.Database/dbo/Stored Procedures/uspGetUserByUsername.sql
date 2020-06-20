@@ -11,6 +11,6 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		SELECT [CreatedAt], [Id], [Username], [PasswordHash] FROM [dbo].[Users] WHERE [Username] = @Username
+		SELECT [CreatedAt], [Id], [Username], [FirstName], [LastName], [PasswordHash], [ImageUrl] FROM [dbo].[Users] WHERE [Username] = @Username
 	END
 END
