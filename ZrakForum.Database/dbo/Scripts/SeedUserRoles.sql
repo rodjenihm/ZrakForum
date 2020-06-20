@@ -1,4 +1,4 @@
-insert into userroles (UserId, RoleId)
+﻿insert into userroles (UserId, RoleId)
 select u.Id, r.Id from users u inner join roles r on r.Name = 'Moderator' or r.Name = 'Admin'  where u.Username = 'admin'
 
 insert into userroles (UserId, RoleId)
