@@ -114,7 +114,8 @@ namespace ZrakForum.Web.Controllers
                 ImageUrl = user.ImageUrl
             };
 
-            return View(userShow);
+            if (username == User.Identity.Name) return View("ShowSelf", userShow);
+            else return View(userShow);
         }
 
         private async Task<ClaimsPrincipal> GenerateUserPrincipal(User user)
