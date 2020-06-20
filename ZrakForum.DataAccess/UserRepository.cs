@@ -20,7 +20,7 @@ namespace ZrakForum.DataAccess
         public async Task CreateAsync(User user)
         {
             using var connection = new SqlConnection(connectionString.Value);
-            var sql = "uspRegisterUser @Id, @Username, @PasswordHash";
+            var sql = "uspRegisterUser @Id, @Username, @PasswordHash, @ImageUrl";
             await connection.ExecuteAsync(sql, user);
         }
 
