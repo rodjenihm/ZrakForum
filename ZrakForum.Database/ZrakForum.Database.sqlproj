@@ -91,5 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ZrakForum.Database.publish.xml" />
+    <None Include="ZrakForum_1.Database.publish.xml" />
   </ItemGroup>
 </Project>
