@@ -43,8 +43,10 @@
                         <br />
                         <span class="font-weight-bold">
                             Najnoviji komentar:
-                            <a class="text-dark" asp-action="Show" asp-controller="User" asp-route-Username="@forumInfo.LastPostedBy">@forumInfo.LastPostedBy</a>
-                            @@ @forumInfo.LastPostedIn, @forumInfo.LastPostedAt.ToString("dd. MM. yyyy. HH:mm")h
+                            <a class="text-danger" asp-action="Show" asp-controller="User" asp-route-Username="@forumInfo.LastPostedBy">@forumInfo.LastPostedBy</a>
+                            @@
+                            <a class="text-primary" asp-action="Show" asp-controller="Topic" asp-route-id="@forumInfo.LastPostedInId">@forumInfo.LastPostedIn</a>
+                            @forumInfo.LastPostedAt.ToString("dd. MM. yyyy. HH:mm")h
                         </span>
                     }
                 </td>

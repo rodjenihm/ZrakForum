@@ -35,8 +35,8 @@ else
                         <br />
                         <span class="font-weight-bold">
                             Započeo:
-                            <a class="text-dark" asp-action="Show" asp-controller="User" asp-route-Username="@item.StartedBy">@item.StartedBy</a>
-                            @@  @item.StartedAt.ToString("dd. MM. yyyy. HH:mm")h
+                            <a class="text-danger" asp-action="Show" asp-controller="User" asp-route-Username="@item.StartedBy">@item.StartedBy</a>
+                            @item.StartedAt.ToString("dd. MM. yyyy. HH:mm")h
                         </span>
                         @if (item.RepliesCount > 0)
                         {
@@ -44,7 +44,7 @@ else
                             <span class="font-weight-bold">
                                 Najnoviji komentar:
                                 <a class="text-dark" asp-action="Show" asp-controller="User" asp-route-Username="@item.LastReplyBy">@item.LastReplyBy</a>
-                                @@ @item.LastReplyAt.ToString("dd. MM. yyyy. HH:mm")h
+                                @item.LastReplyAt.ToString("dd. MM. yyyy. HH:mm")h
                             </span>
                         }
                     </td>

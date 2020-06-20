@@ -6,9 +6,8 @@
                 Pozdrav @@@User.Identity.Name!
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Podešavanja profila</a>
-                <a class="dropdown-item" href="#">Moje teme</a>
-                <a class="dropdown-item" href="#">Moji komentari</a>
+                <a class="dropdown-item" asp-action="Show" asp-controller="User" asp-route-Username="@User.Identity.Name">Moj profil</a>
+                <a class="dropdown-item" asp-action="Index" asp-controller="Messages">Moje poruke</a>
             </div>
         </li>
         @*<li>
