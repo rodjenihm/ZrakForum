@@ -43,7 +43,7 @@ else
                             <br />
                             <span class="font-weight-bold">
                                 Najnoviji komentar:
-                                <a class="text-dark" asp-action="Show" asp-controller="User" asp-route-Username="@item.LastReplyBy">@item.LastReplyBy</a>
+                                <a class="text-danger" asp-action="Show" asp-controller="User" asp-route-Username="@item.LastReplyBy">@item.LastReplyBy</a>
                                 @item.LastReplyAt.ToString("dd. MM. yyyy. HH:mm")h
                             </span>
                         }

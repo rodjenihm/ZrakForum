@@ -4,7 +4,5 @@
 	[Id] NVARCHAR(32) NOT NULL PRIMARY KEY,
 	[SenderId] NVARCHAR(32) NOT NULL,
 	[ReceiverId] NVARCHAR(32) NOT NULL, 
-	[Text] NVARCHAR(MAX) NOT NULL,
-    CONSTRAINT [FK_Messages_Users_Sender] FOREIGN KEY ([SenderId]) REFERENCES [Users]([Id]),
-    CONSTRAINT [FK_Messages_Users_Receiver] FOREIGN KEY ([ReceiverId]) REFERENCES [Users]([Id])
+	[Text] NVARCHAR(MAX) NOT NULL
 )
