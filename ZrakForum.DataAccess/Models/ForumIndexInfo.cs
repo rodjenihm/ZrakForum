@@ -14,6 +14,7 @@ namespace ZrakForum.DataAccess.Models
         public int TopicsCount { get; set; }
         public int RepliesCount { get; set; }
         public string LastPostedBy { get; set; }
+        public string LastPostedInId { get; set; }
         public string LastPostedIn { get; set; }
         public DateTime LastPostedAt { get; set; }
     }
