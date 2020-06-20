@@ -22,8 +22,4 @@
     <ProjectReference Include="..\ZrakForum.Services\ZrakForum.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
-
 </Project>

@@ -11,6 +11,7 @@ using ZrakForum.DataAccess;
 using ZrakForum.EntityModel;
 using ZrakForum.Services;
 using ZrakForum.Web.Dto;
+using ZrakForum.Web.Model;
 
 namespace ZrakForum.Web.Controllers
 {
@@ -97,6 +98,13 @@ namespace ZrakForum.Web.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> Show(string username)
+        {
+            var user = await userRepository.GetByUsernameAsync(username);
+            var userShow = new UserShowViewModel { Username = user.Username };
+            return View(userShow);
         }
 
         private async Task<ClaimsPrincipal> GenerateUserPrincipal(User user)

@@ -34,13 +34,17 @@ else
                         </span>
                         <br />
                         <span class="font-weight-bold">
-                            Započeo: @item.StartedBy @@  @item.StartedAt.ToString("dd. MM. yyyy. HH:mm")h
+                            Započeo:
+                            <a class="text-dark" asp-action="Show" asp-controller="User" asp-route-Username="@item.StartedBy">@item.StartedBy</a>
+                            @@  @item.StartedAt.ToString("dd. MM. yyyy. HH:mm")h
                         </span>
                         @if (item.RepliesCount > 0)
                         {
                             <br />
                             <span class="font-weight-bold">
-                                Najnoviji komentar: @item.LastReplyBy @@ @item.LastReplyAt.ToString("dd. MM. yyyy. HH:mm")h
+                                Najnoviji komentar:
+                                <a class="text-dark" asp-action="Show" asp-controller="User" asp-route-Username="@item.LastReplyBy">@item.LastReplyBy</a>
+                                @@ @item.LastReplyAt.ToString("dd. MM. yyyy. HH:mm")h
                             </span>
                         }
                     </td>
