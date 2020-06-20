@@ -76,7 +76,8 @@ namespace ZrakForum.Web.Controllers
             {
                 Id = Guid.NewGuid().ToString("N"),
                 Username = model.Username,
-                PasswordHash = passwordHasher.HashPassword(model.Password)
+                PasswordHash = passwordHasher.HashPassword(model.Password),
+                ImageUrl = "/img/profile.png"
             };
 
             try
@@ -103,7 +104,15 @@ namespace ZrakForum.Web.Controllers
         public async Task<IActionResult> Show(string username)
         {
             var user = await userRepository.GetByUsernameAsync(username);
-            var userShow = new UserShowViewModel { Username = user.Username };
+            var userShow = new UserShowViewModel
+            {
+                CreatedAt = user.CreatedAt,
+                Username = user.Username,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                ImageUrl = user.ImageUrl
+            };
+
             return View(userShow);
         }
 
