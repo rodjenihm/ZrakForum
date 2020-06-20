@@ -8,6 +8,10 @@ for details on configuring this project to bundle and minify static web assets. 
     box-sizing: border-box;
 }
 
+html {
+    background: rgba(32, 32, 32, 0.9)
+}
+
 html, body {
     min-height: 100%;
     font-size: 15px;
@@ -48,8 +52,8 @@ body {
 }
 
 .img-profile {
-    max-height: 120px;
-    width: auto;
+    height: auto;
+    max-width: 120px;
     border: 1px solid grey;
 }
 
