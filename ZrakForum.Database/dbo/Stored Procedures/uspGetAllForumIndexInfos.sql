@@ -4,7 +4,7 @@ BEGIN
 	SET NOCOUNT ON
 
 	SELECT
-	[Id], [Name], [Description], [TopicsCount], [RepliesCount], [LastPostedBy], [LastPostedIn], [LastPostedAt]
+	[Id], [Name], [Description], [TopicsCount], [RepliesCount], [LastPostedInId], [LastPostedBy], [LastPostedIn], [LastPostedAt]
 	FROM (SELECT
 		f.[Id], f.[Name], f.[Description],
 		dense_rank() OVER (PARTITION BY f.[Name] ORDER BY t.[Title])
@@ -13,7 +13,7 @@ BEGIN
 		- CASE COUNT(t.Title) OVER (PARTITION BY f.[Name]) WHEN COUNT(*) OVER (PARTITION BY f.[Name]) THEN 0 ELSE 1 END
 		AS TopicsCount,
 		COUNT(r.[Id]) OVER (PARTITION BY f.[Name]) AS RepliesCount,
-		u.[Username] as LastPostedBy, t.[Title] as LastPostedIn, r.[CreatedAt] AS LastPostedAt,
+		u.[Username] as LastPostedBy, t.[Id] AS LastPostedInId, t.[Title] as LastPostedIn, r.[CreatedAt] AS LastPostedAt,
 		ROW_NUMBER() OVER (PARTITION BY f.[Name] ORDER BY r.[CreatedAt] DESC) AS rc
 		FROM [dbo].[Forums] f
 		LEFT JOIN [dbo].[Topics] t on t.ForumId = f.Id

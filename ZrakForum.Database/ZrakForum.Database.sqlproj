@@ -84,6 +84,7 @@
     <Build Include="dbo\Stored Procedures\uspGetTopicShowById.sql" />
     <Build Include="dbo\Stored Procedures\uspCreateReply.sql" />
     <Build Include="dbo\Table\Messages.sql" />
+    <Build Include="dbo\Stored Procedures\uspCreateMessage.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />
