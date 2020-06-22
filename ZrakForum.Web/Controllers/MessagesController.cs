@@ -35,6 +35,12 @@ namespace ZrakForum.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Send(MessageComposeDto model, string sendTo)
         {
+            if (string.IsNullOrEmpty(sendTo))
+            {
+                ViewBag.Error = "Niste naveli korisničko ime kome je upućena poruka";
+                return View("Compose", model);
+            }
+
             var senderId = User.Claims.FirstOrDefault(c => c.Type == "Id").Value;
 
             var receiverId = (await userRepository.GetByUsernameAsync(sendTo)).Id;
@@ -51,12 +57,12 @@ namespace ZrakForum.Web.Controllers
             try
             {
                 await messageRepository.CreateAsync(message);
-                return RedirectToAction("Show", "User", new { username = sendTo });
+                return RedirectToAction("Outbox", "Messages");
             }
             catch (Exception e)
             {
                 ViewBag.Error = e.Message;
-                throw;
+                return View("Compose", model);
             }
         }
 
