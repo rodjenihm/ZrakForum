@@ -89,6 +89,7 @@
     <None Include="dbo\Scripts\SeedTopicsAndReplies.sql" />
     <Build Include="dbo\Stored Procedures\uspGetReceivedMessagesByUserId.sql" />
     <Build Include="dbo\Stored Procedures\uspGetSentMessagesByUserId.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetMessageById.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />
