@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Poruke";
+}
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="btn btn-primary mb-2" style="width: 100%" asp-action="Inbox" asp-controller="Messages">Primljene poruke</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary mb-2" style="width: 100%" asp-action="Outbox" asp-controller="Messages">Poslate poruke</a>
+                </li>
+            </ul>
+            <hr />
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>

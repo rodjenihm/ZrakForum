@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace ZrakForum.Web.Dto
 {
-    public class MessageSendDto
+    public class MessageComposeDto
     {
+        [Required(ErrorMessage = "{0} je obavezan")]
+        [MaxLength(30, ErrorMessage = "{0} mora imati najviše {1} karaktera")]
+        [Display(Name = "Naslov")]
+        public string Subject { get; set; }
         [Required(ErrorMessage = "{0} je obavezan")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Tekst poruke")]

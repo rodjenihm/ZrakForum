@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ZrakForum.DataAccess.Models.SentMessage>
+
+@{
+    ViewData["Title"] = "Outbox";
+    Layout = "~/Views/Messages/_Layout.cshtml";
+}
+
+@if (!Model.Any())
+{
+    <h2 class="font-weight-bold text-dark">Nemate poslatih poruka</h2>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SentAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReceiverUsername)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.SentAt.ToString("dd. MM. yyyy. HH:mm")h
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                    <td>
+                        <a asp-action="Show" asp-controller="User" asp-route-Username="@item.ReceiverUsername">@item.ReceiverUsername</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

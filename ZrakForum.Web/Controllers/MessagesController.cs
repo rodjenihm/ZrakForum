@@ -21,15 +21,19 @@ namespace ZrakForum.Web.Controllers
             this.userRepository = userRepository;
         }
 
+        public IActionResult Index()
+        {
+            return RedirectToAction("Inbox");
+        }
 
-        public IActionResult Send(string sendTo)
+        public IActionResult Compose(string sendTo)
         {
             ViewBag.SendTo = sendTo;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Send(MessageSendDto model, string sendTo)
+        public async Task<IActionResult> Send(MessageComposeDto model, string sendTo)
         {
             var senderId = User.Claims.FirstOrDefault(c => c.Type == "Id").Value;
 
@@ -38,6 +42,7 @@ namespace ZrakForum.Web.Controllers
             var message = new Message
             {
                 Id = Guid.NewGuid().ToString("N"),
+                Subject = model.Subject,
                 Text = model.Text,
                 SenderId = senderId,
                 ReceiverId = receiverId
@@ -53,6 +58,20 @@ namespace ZrakForum.Web.Controllers
                 ViewBag.Error = e.Message;
                 throw;
             }
+        }
+
+        public async Task<IActionResult> Inbox()
+        {
+            var id = User.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var receivedMessages = await messageRepository.GetReceivedMessagesByUserId(id);
+            return View(receivedMessages);
+        }
+
+        public async Task<IActionResult> Outbox()
+        {
+            var id = User.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var sentMessages = await messageRepository.GetSentMessagesByUserId(id);
+            return View(sentMessages);
         }
     }
 }

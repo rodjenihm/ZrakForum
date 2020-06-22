@@ -5,6 +5,9 @@ namespace ZrakForum.EntityModel
     public class Message : BaseEntity
     {
         [Required]
+        [MaxLength(30)]
+        public string Subject { get; set; }
+        [Required]
         public string Text { get; set; }
         public string SenderId { get; set; }
         public User Sender { get; set; }

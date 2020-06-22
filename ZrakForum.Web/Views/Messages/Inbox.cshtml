@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ZrakForum.DataAccess.Models.ReceivedMessage>
+
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Messages/_Layout.cshtml";
+}
+
+@if (!Model.Any())
+{
+    <h2 class="font-weight-bold text-dark">Nemate primljenih poruka</h2>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReceivedAt)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SenderUsername)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReceivedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                    <td>
+                        <a asp-action="Show" asp-controller="User" asp-route-Username="@item.SenderUsername">@item.SenderUsername</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
