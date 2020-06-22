@@ -23,6 +23,13 @@ namespace ZrakForum.DataAccess
             await connection.ExecuteAsync(sql, message);
         }
 
+        public async Task<Message> GetByIdAsync(string id)
+        {
+            using var connection = new SqlConnection(connectionString.Value);
+            var sql = @"uspGetMessageById @Id";
+            return await connection.QueryFirstAsync<Message>(sql, new { Id = id });
+        }
+
         public async Task<IEnumerable<ReceivedMessage>> GetReceivedMessagesByUserId(string userId)
         {
             using var connection = new SqlConnection(connectionString.Value);
