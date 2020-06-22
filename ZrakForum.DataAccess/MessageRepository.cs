@@ -1,6 +1,8 @@
 ﻿using Dapper;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using ZrakForum.DataAccess.Models;
 using ZrakForum.EntityModel;
 
 namespace ZrakForum.DataAccess
@@ -17,8 +19,22 @@ namespace ZrakForum.DataAccess
         public async Task CreateAsync(Message message)
         {
             using var connection = new SqlConnection(connectionString.Value);
-            var sql = "uspCreateMessage @Id, @Text, @SenderId, @ReceiverId";
+            var sql = "uspCreateMessage @Id, @Subject, @Text, @SenderId, @ReceiverId";
             await connection.ExecuteAsync(sql, message);
+        }
+
+        public async Task<IEnumerable<ReceivedMessage>> GetReceivedMessagesByUserId(string userId)
+        {
+            using var connection = new SqlConnection(connectionString.Value);
+            var sql = @"uspGetReceivedMessagesByUserId @UserId";
+            return await connection.QueryAsync<ReceivedMessage>(sql, new { UserId = userId });
+        }
+
+        public async Task<IEnumerable<SentMessage>> GetSentMessagesByUserId(string userId)
+        {
+            using var connection = new SqlConnection(connectionString.Value);
+            var sql = @"uspGetSentMessagesByUserId @UserId";
+            return await connection.QueryAsync<SentMessage>(sql, new { UserId = userId });
         }
     }
 }
